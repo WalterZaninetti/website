@@ -3,3 +3,26 @@
 @tailwind utilities;
 
 
+.text-walter-green{
+    color : #388659;
+}
+
+.text-walter-blue{
+    color : #0E4781;
+}
+
+.text-walter-light{
+    color : #FFFCE8;
+}
+
+.bg-walter-green{
+    background-color : #388659;
+}
+
+.bg-walter-blue{
+    background-color : #0E4781;
+}
+
+.bg-walter-light{
+    background-color : #FFFCE8;
+}

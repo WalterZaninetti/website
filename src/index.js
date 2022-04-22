@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import Home from "./pages/Home";
 import PageNotFound from "./pages/PageNotFound";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import NavigationBar from "./components/NavigationBar";
+import NavigationBar from "./components/layouts/navigation/NavigationBar";
 
 // ReactDOM.render(
 //   document.getElementById('root')
