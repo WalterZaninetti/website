@@ -1,5 +1,4 @@
 import gameController from "../../static/icons/game-controller.svg";
-import conversation from "../../static/icons/conversation.svg";
 import internet from "../../static/icons/internet.svg";
 import development from "../../static/icons/development.svg";
 import season from "../../static/icons/season.svg";
@@ -8,12 +7,11 @@ import sport from "../../static/icons/sports.svg";
 import management from "../../static/icons/project-management.svg";
 import blog from "../../static/icons/blogging.svg";
 import {
-    BookmarkAltIcon,
-    BriefcaseIcon, DesktopComputerIcon, GlobeAltIcon,
+    BriefcaseIcon,
+    GlobeAltIcon,
     InformationCircleIcon,
-    NewspaperIcon,
     OfficeBuildingIcon,
-    ShieldCheckIcon, UserGroupIcon
+    UserGroupIcon
 } from "@heroicons/react/solid";
 
 export const contents = [
@@ -21,19 +19,19 @@ export const contents = [
         name: "Development",
         description:
             "Get a better understanding of where your traffic is coming from.",
-        href: "#",
+        href: "/dev",
         icon: development,
     },
     {
         name: "Gaming",
         description: "Speak directly to your customers in a more meaningful way.",
-        href: "#",
+        href: "/gaming",
         icon: gameController,
     },
     {
         name: "Nature",
         description: "Your customers' data will be safe and secure.",
-        href: "#",
+        href: "/nature",
         icon: nature,
     },
 ];
@@ -43,19 +41,19 @@ export const mobile_contents = [
         name: "Development",
         description:
             "Get a better understanding of where your traffic is coming from.",
-        href: "#",
+        href: "/dev",
         icon: development,
     },
     {
         name: "Gaming",
         description: "Speak directly to your customers in a more meaningful way.",
-        href: "#",
+        href: "/gaming",
         icon: gameController,
     },
     {
         name: "Nature",
         description: "Your customers' data will be safe and secure.",
-        href: "#",
+        href: "/nature",
         icon: nature,
     },
     // {
@@ -71,10 +69,10 @@ export const mobile_contents = [
         icon: management,
     },
     {
-        name: "Blog",
+        name: "Websites",
         description: "Connect with third-party tools that you're already using.",
-        href: "#",
-        icon: blog,
+        href: "/websites",
+        icon: internet,
     },
 ];
 
@@ -84,19 +82,19 @@ export const projects = [
         name: "Braver",
         description:
             "Get a better understanding of where your traffic is coming from.",
-        href: "#",
+        href: "/braver",
         icon: sport,
     },
     {
         name: "Seasonable",
         description: "Speak directly to your customers in a more meaningful way.",
-        href: "#",
+        href: "/seasonable",
         icon: season,
     },
     {
         name: "Websites",
         description: "Your customers' data will be safe and secure.",
-        href: "#",
+        href: "/websites",
         icon: internet,
     },
 ];
@@ -131,3 +129,9 @@ export const blogPosts = [
     },
 
 ];
+
+
+export function getRandomContent(){
+    const contents  = ['/dev','/nature','/gaming','/seasonable','/websites' , '/braver'];
+    return contents[Math.floor(Math.random() * contents.length)];
+}

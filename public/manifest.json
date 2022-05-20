@@ -3,23 +3,48 @@
   "name": "Walter Zaninetti Website",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
+      "src": "w16.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "16x16"
     },
     {
-      "src": "logo512.png",
+      "src": "w24.png",
+      "type": "image/png",
+      "sizes": "24x24"
+    },
+    {
+      "src": "w32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "w64.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "w128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "w256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "w512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#388659",
+  "author": "Walter Zaninetti",
+  "description": "Walter Zaninetti websites, built in React JS and TailwindCSS",
+  "keywords": [
+    "development"
+  ],
+  "background_color": "#FFFCE8"
 }

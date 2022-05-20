@@ -11,9 +11,16 @@ import controller from "../static/icons/game-controller.svg";
 import nature from "../static/icons/nature.svg";
 import project from "../static/icons/project-management.svg";
 
+import svg1 from "../static/icons/ideas.svg";
+import svg2 from "../static/icons/coder.svg";
+import svg3 from "../static/icons/homescreen.svg";
+import svg4 from "../static/icons/moon.svg";
+import svg5 from "../static/icons/firmware.svg";
+
 import artudorme from "../static/photos/artudorme.jpg";
 import io from "../static/photos/io.jpg";
-import nonna from "../static/photos/nonna.jpg";
+import iofrapisolo from "../static/photos/iofrapisolo.jpg";
+import iofrapisolo2 from "../static/photos/iofrapisolo2.jpg";
 import pisa from "../static/photos/pisa.jpg";
 import mebirra from "../static/photos/me-birra.jpg";
 import ioenoah from "../static/photos/ioenoah.jpg";
@@ -44,7 +51,11 @@ export function getRandomImage() {
       title: "Mia foto",
     },
     {
-      image: nonna,
+      image: iofrapisolo,
+      title: "Io e la nonna",
+    },
+    {
+      image: iofrapisolo2,
       title: "Io e la nonna",
     },
     {
@@ -61,4 +72,30 @@ export function getRandomImage() {
     },
   ];
   return images[Math.floor(Math.random() * images.length)];
+}
+
+export function getRandomSvgHero() {
+  const svgs = [
+    {
+      image: svg1,
+      animation: "Artu Dorme",
+    },
+    {
+      image: svg2,
+      animation: "Artu Dorme",
+    },
+    {
+      image: svg3,
+      animation: "Artu Dorme",
+    },
+    {
+      image: svg4,
+      animation: "Artu Dorme",
+    },
+    {
+      image: svg5,
+      animation: "Artu Dorme",
+    },
+  ];
+  return svgs[Math.floor(Math.random() * svgs.length)];
 }

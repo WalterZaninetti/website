@@ -1,23 +1,13 @@
-import React, { Fragment } from "react";
-import { Popover, Transition } from "@headlessui/react";
-import {
-  MenuIcon,
-  XIcon,
-} from "@heroicons/react/outline";
+import React, {Fragment} from "react";
+import {Popover, Transition} from "@headlessui/react";
+import {MenuIcon, XIcon,} from "@heroicons/react/outline";
 import shuffle from "../../../static/icons/shuffle.svg";
-
-import MenuNavbarWithBlogPost from "./MenuNavbarWithBlogPost";
 import MenuNavbarWithoutBlog from "./MenuNavbarWithoutBlog";
-import {
-  blogPosts,
-  company,
-  contents, mobile_contents,
-  projects,
-  resources
-} from "../../../variables/navbar/NavbarVariables";
+import {contents, getRandomContent, mobile_contents, projects} from "../../../variables/navbar/NavbarVariables";
 import {getRandomLogo} from "../../../util/RandomUtil";
-
+import SpotifyBanner from "../../SpotifyBanner";
 export default function NavigatorBar() {
+
   return (
     <Popover className="relative bg-walter-light">
       <div
@@ -25,11 +15,11 @@ export default function NavigatorBar() {
         aria-hidden="true"
       />
       <div className="relative z-20">
-        <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-5 sm:px-6 sm:py-4 lg:px-8 md:justify-start md:space-x-10">
+        <div className="w-full mx-auto flex justify-between items-center px-4 py-5 sm:px-6 sm:py-4 lg:px-12 md:justify-center md:space-x-10">
           <div>
-            <a href="src/components/layouts/navigation/NavigationBar#" className="flex">
+            <a href="/" className="flex">
               <span className="sr-only">Workflow</span>
-              <img className="h-10 w-auto sm:h-16" src={getRandomLogo()} alt="" />
+              <img className="h-16 w-auto sm:h-20" src={getRandomLogo()} alt="" />
             </a>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
@@ -44,6 +34,9 @@ export default function NavigatorBar() {
               <MenuNavbarWithoutBlog contents={projects} label="Progetti"/>
               {/*<MenuNavbarWithBlogPost blogPosts={blogPosts} company={company} resources={resources} />*/}
             </Popover.Group>
+          </div>
+          <div className="hidden md:flex md:items-center md:justify-start rounded-2xl">
+               <SpotifyBanner/>
           </div>
         </div>
       </div>
@@ -66,7 +59,7 @@ export default function NavigatorBar() {
               <div className="flex items-center justify-between">
                 <div>
                   <img
-                    className="h-10 w-auto"
+                    className="h-12 w-auto"
                     src={getRandomLogo()}
                     alt="Workflow"
                   />
@@ -98,13 +91,12 @@ export default function NavigatorBar() {
                   </div>
                   <div className="mt-4 py-4 text-base rounded-md flex justify-center items-center cursor-pointer hover:bg-blue-500 hover:text-white">
                     <a
-                      href="src/components/layouts/navigation/NavigationBar#"
+                      href={getRandomContent()}
                       className="font-bold text-lg px-3"
                     >
-                      {" "}
                       Contenuto casuale
                     </a>
-                    <img src={shuffle} className="w-5 h-5 mt-1" alt=""/>
+                    <img src={shuffle} className="w-5 h-5" alt=""/>
                   </div>
                 </nav>
               </div>

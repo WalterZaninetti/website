@@ -1,7 +1,8 @@
-import { SpeakerphoneIcon, XIcon } from "@heroicons/react/outline";
 import React, { useEffect, useState } from "react";
 import SpotifyApi from "../api/SpotifyApi";
-
+import spotify from "../static/icons/spotify.svg";
+import spotify_black from "../static/icons/spotify_black.svg";
+import { Transition } from "@headlessui/react";
 // https://accounts.spotify.com/authorize?client_id=ea7b3333f05546f4b992d7ed868db883&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:3000&scope=user-read-currently-playing
 //http://localhost:3000/?code=AQAXIFGUYlKvwuVuCgj4FI2EfjOmEoKbV0qcty_j6-MaLqGv7CL-KqzzdE484TT03i5PZxyVqulEkUMJvupbVpQIHENisA9h23iT_Ne-UlTLE1xBOU4VbO_0HyR6j7_O-H-44JLv-OPekwIDFA4N3TcUFXv1P5hUIyW5BEvun8z4TQci3Au8CSMzATPkpE-3UilDznEv
 
@@ -98,13 +99,35 @@ export default function SpotifyBanner() {
     },
   });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const json = await SpotifyApi();
-      setTrack(json);
-    };
-    fetchData().catch(console.error);
-  }, []);
+  const [showInfo, setShowInfo] = useState(false);
+
+  // useEffect(() => {
+  //   const fetchData = setInterval(
+  //     () => async () => {
+  //       const json = await SpotifyApi();
+  //       setTrack(json);
+  //     },
+  //     7500
+  //   );
+  //   return () => clearInterval(fetchData);
+  // } , [track]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const json = await SpotifyApi();
+            setTrack(json);
+        };
+        fetchData().catch(console.error);
+    } , []);
+
+    async function handleOpen(value) {
+        setShowInfo(value)
+        if(value){
+            const json = await SpotifyApi();
+            setTrack(json);
+        }
+    }
+
 
   // function getTrack() {
   //   axios
@@ -130,29 +153,54 @@ export default function SpotifyBanner() {
   // }
 
   return (
-    <div className="bg-white">
-      <div className="max-w-7xl mx-auto py-2 px-3 sm:px-6 lg:px-8">
+    <div className=" flex items-center bg-walter-green justify-between rounded-full p-2">
+      <img
+        onClick={(e) => handleOpen(!showInfo)}
+        src={spotify}
+        className={
+          track.isPlaying === false
+            ? "hidden"
+            : "h-16 w-16 hover:animate-spin cursor-pointer"
+        }
+        alt="Check my spotify! Im listening something"
+      />
+      <img
+        src={spotify_black}
+        className={
+          track.isPlaying === true
+            ? "hidden"
+            : "h-16 w-16 hover:animate-spin cursor-pointer"
+        }
+        alt="Not playing"
+      />
+      <Transition
+        show={showInfo}
+        enter="transform transition ease-in-out duration-500 sm:duration-700"
+        enterFrom="translate-x-full"
+        enterTo="translate-x-0"
+        leave="transform transition ease-in-out duration-500 sm:duration-700"
+        leaveFrom="translate-x-0"
+        leaveTo="translate-x-full"
+      >
         <div className="flex items-center justify-between flex-wrap">
-          <div className="w-0 flex-1 flex justify-center items-center">
-            <span className="flex rounded-lg">
-              <img
-                src={track.albumImageUrl}
-                className="h-12 w-12"
-                aria-hidden="true"
-                alt=""
-              />
-            </span>
-            <p className="ml-3 font-medium text-black truncate">
-              <span className="md:hidden">
-                {track.artist} - {track.title}
-              </span>
-              <span className="hidden md:inline">
-                  {track.artist} - {track.title}
+          <div className=" flex p-2 flex justify-center items-center animate-pulse">
+            {/*<span className=" rounded-lg">*/}
+            {/*  <img*/}
+            {/*    src={track.albumImageUrl}*/}
+            {/*    className="h-24 w-24"*/}
+            {/*    aria-hidden="true"*/}
+            {/*    alt=""*/}
+            {/*  />*/}
+            {/*</span>*/}
+            <p className=" font-extrabold text-walter-light">
+              <span className="inline truncate">
+                {track.title}
+                <span className="text-center block text-walter-light">{track.artist}</span>
               </span>
             </p>
           </div>
         </div>
-      </div>
+      </Transition>
     </div>
   );
 }
